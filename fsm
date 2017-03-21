@@ -15,9 +15,10 @@ declare function state1 {
     PRINT "state 1".
     // Do stuff
     if(randomVariable1) {
-        state2().
-    } else {
+        SET randomVariable1 TO False.
         state1().
+    } else {
+        state2().
     }
 }
 
