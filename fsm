@@ -1,0 +1,47 @@
+// ********************** kOS finite state machine example *********************** //
+CLEARSCREEN.
+SET randomVariable1 TO True.
+SET randomVariable2 TO True.
+SET randomVariable3 TO True.
+PRINT "starting state machine".
+state1().
+PRINT "state machine completed".
+// Code that will be executed after the state3 has finished (without calling state1 again)
+// More code
+// More comments
+
+declare function state1 {
+    WAIT 1.
+    PRINT "state 1".
+    // Do stuff
+    if(randomVariable1) {
+        state2().
+    } else {
+        state1().
+    }
+}
+
+declare function state2
+{
+    WAIT 1.
+    PRINT "state 2".
+    // Do more stuff
+    if(randomVariable1 AND randomVariable2) {
+        SET randomVariable2 TO False.
+        state1().
+    } else {
+        state3().
+    }
+}
+
+declare function state3
+{
+    WAIT 1.
+    PRINT "state 3".
+    // Add more boosters!
+    if(randomVariable3) {
+        SET randomVariable3 TO False.
+        state1().
+    }
+    // No else branch so the state machine will exit here
+}
